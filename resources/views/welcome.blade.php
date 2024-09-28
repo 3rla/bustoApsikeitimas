@@ -31,7 +31,7 @@
                     @guest
                         <a href="{{ route('login') }}"
                             class="ml-4 text-gray-900 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100">Sign
-                            Up</a>
+                            In</a>
                     @endguest
                 </div>
             </div>

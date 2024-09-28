@@ -31,4 +31,20 @@ Route::middleware([
         return view('admin-panel');
     })->name('admin-panel');
     // })->middleware('can:admin-panel');
+
+    Route::get('/admin-panel/users', function () {
+        return view('admin.admin-users');
+    })->name('admin.users');
+
+    Route::get('/admin-panel/swaps', function () {
+        return view('admin.admin-swaps');
+    })->name('admin.swaps');
+
+    Route::get('/admin-panel/reviews', function () {
+        return view('admin.admin-reviews');
+    })->name('admin.reviews');
+
+    Route::get('/admin-panel/reports', function () {
+        return view('admin.admin-reports');
+    })->name('admin.reports');
 });
