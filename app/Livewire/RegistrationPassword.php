@@ -3,17 +3,14 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Traits\TogglePasswordVisibilityTrait;
 
 class RegistrationPassword extends Component
 {
     public $password = '';
     public $passwordConfirmation = '';
-    public $showPassword = false;
 
-    public function togglePasswordVisibility()
-    {
-        $this->showPassword = !$this->showPassword;
-    }
+    use TogglePasswordVisibilityTrait;
 
     public function render()
     {

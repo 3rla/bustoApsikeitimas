@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title', 100);
             $table->text('description');
             $table->string('city', 50);
-            $table->string('country', 50);
+            $table->string('country', 255);
             $table->string('address', 255);
             $table->string('postal_code', 20);
             $table->unsignedTinyInteger('bedrooms');
@@ -26,9 +26,8 @@ return new class extends Migration
             $table->boolean('is_available')->default(true);
             $table->date('available_from')->nullable();
             $table->date('available_to')->nullable();
-            $table->decimal('latitude', 10, 8)->nullable();
-            $table->decimal('longitude', 11, 8)->nullable();
             $table->json('amenities')->nullable();
+            $table->json('images')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

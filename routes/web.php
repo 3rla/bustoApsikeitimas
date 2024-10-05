@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\ListingDetails;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,10 +28,19 @@ Route::middleware([
         return view('view-more');
     })->name('view-more');
 
+    Route::get('/my-houses', function () {
+        return view('my-houses');
+    })->name('my-houses');
+
+    Route::get('/listing/{id}', function ($id) {
+        return view('listing-details', ['id' => $id]);
+    })->name('listing.details');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin-panel', function () {
         return view('admin-panel');
     })->name('admin-panel');
-    // })->middleware('can:admin-panel');
 
     Route::get('/admin-panel/users', function () {
         return view('admin.admin-users');

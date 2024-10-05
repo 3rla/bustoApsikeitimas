@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View More</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 
 <body>
@@ -14,14 +13,12 @@
     <!-- Navbar -->
     <livewire:navbar />
 
-    <!--- Info boxes -->
-    <section class="container mx-auto p-6">
-        <!-- Main content -->
-        <div class="container mx-auto p-6">
+    <section class="container p-6 mx-auto">
+        <div class="container p-6 mx-auto">
             <!-- Stats Boxes -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-3">
                 <div
-                    class="bg-white shadow-lg rounded-lg p-6 transition duration-300 ease-in-out transform hover:scale-105">
+                    class="p-6 transition duration-300 ease-in-out transform bg-white rounded-lg shadow-lg hover:scale-105">
                     <div class="flex items-center justify-between">
                         <div class="text-xl font-semibold text-gray-700">Total Users</div>
                         <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -31,11 +28,11 @@
                             </path>
                         </svg>
                     </div>
-                    <div class="text-3xl font-bold text-gray-800 mt-4">1,234</div>
-                    <div class="text-sm text-gray-500 mt-2">12% increase from last month</div>
+                    <div class="mt-4 text-3xl font-bold text-gray-800">1,234</div>
+                    <div class="mt-2 text-sm text-gray-500">12% increase from last month</div>
                 </div>
                 <div
-                    class="bg-white shadow-lg rounded-lg p-6 transition duration-300 ease-in-out transform hover:scale-105">
+                    class="p-6 transition duration-300 ease-in-out transform bg-white rounded-lg shadow-lg hover:scale-105">
                     <div class="flex items-center justify-between">
                         <div class="text-xl font-semibold text-gray-700">Total Listed Homes</div>
                         <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -45,11 +42,11 @@
                             </path>
                         </svg>
                     </div>
-                    <div class="text-3xl font-bold text-gray-800 mt-4">567</div>
-                    <div class="text-sm text-gray-500 mt-2">5% increase from last week</div>
+                    <div class="mt-4 text-3xl font-bold text-gray-800">567</div>
+                    <div class="mt-2 text-sm text-gray-500">5% increase from last week</div>
                 </div>
                 <div
-                    class="bg-white shadow-lg rounded-lg p-6 transition duration-300 ease-in-out transform hover:scale-105">
+                    class="p-6 transition duration-300 ease-in-out transform bg-white rounded-lg shadow-lg hover:scale-105">
                     <div class="flex items-center justify-between">
                         <div class="text-xl font-semibold text-gray-700">Active Exchanges</div>
                         <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -58,14 +55,14 @@
                                 d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
                         </svg>
                     </div>
-                    <div class="text-3xl font-bold text-gray-800 mt-4">89</div>
-                    <div class="text-sm text-gray-500 mt-2">3% increase from yesterday</div>
+                    <div class="mt-4 text-3xl font-bold text-gray-800">89</div>
+                    <div class="mt-2 text-sm text-gray-500">3% increase from yesterday</div>
                 </div>
             </div>
 
             <!-- Chart -->
-            <div class="bg-white shadow-lg rounded-lg p-6">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Monthly Home Exchanges</h2>
+            <div class="p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="mb-4 text-2xl font-semibold text-gray-800">Monthly Home Exchanges</h2>
                 <div class="relative h-64 sm:h-96">
                     <canvas id="exchangeChart" class="w-full h-full"></canvas>
                 </div>
