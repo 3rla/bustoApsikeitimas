@@ -28,6 +28,20 @@
                         <h2 class="mb-2 text-3xl font-semibold text-gray-800">{{ $listing->title }}</h2>
                         <h6 class="mb-4 text-sm font-medium text-gray-500">{{ $listing->city }},
                             {{ $listing->country }}</h6>
+
+                        <!-- Add user information -->
+                        <div class="flex items-center mb-4">
+                            <a href="{{ route('user.profile', ['userId' => $listing->user->id]) }}">
+                                <img src="{{ $listing->user->profile_photo_url }}"
+                                    alt="{{ $listing->user->name }} {{ substr($listing->user->last_name, 0, 1) . '.' }}"
+                                    class="w-10 h-10 mr-3 rounded-full">
+                            </a>
+                            <div>
+                                <p class="font-semibold text-gray-800">{{ $listing->user->name }}
+                                    {{ substr($listing->user->last_name, 0, 1) . '.' }}</p>
+                                <p class="text-sm text-gray-600">Listed by</p>
+                            </div>
+                        </div>
                         <p class="mb-6 text-gray-600">{{ $listing->description }}</p>
 
                         <div class="grid grid-cols-2 gap-6 mb-6">

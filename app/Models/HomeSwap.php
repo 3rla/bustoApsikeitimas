@@ -34,16 +34,19 @@ class HomeSwap extends Model
         return $this->belongsTo(User::class, 'sender_user_id');
     }
 
-    /**
-     * Get the user that receives the home swap.
-     *
-     * This function defines a relationship where the current home swap
-     * belongs to a user identified by the 'receiver_user_id' foreign key.
-     *
-     */
     public function receiverUser()
     {
         return $this->belongsTo(User::class, 'receiver_user_id');
+    }
+
+    public function senderHome()
+    {
+        return $this->belongsTo(home_listings::class, 'sender_listing_id');
+    }
+
+    public function receiverHome()
+    {
+        return $this->belongsTo(home_listings::class, 'receiver_listing_id');
     }
 
     /**

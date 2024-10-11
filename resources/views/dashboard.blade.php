@@ -9,19 +9,12 @@
 </head>
 
 <body class="text-gray-800 bg-gray-100">
+    <x-cookie-banner />
 
     <!-- Navbar -->
     <livewire:navbar />
 
     <section class="container p-6 mx-auto">
-        <!-- Search and Filter -->
-        <div class="flex justify-center my-6">
-            <div class="flex items-center w-full max-w-md">
-                <input type="text" placeholder="Search"
-                    class="w-full px-4 py-2 border rounded-l-lg focus:outline-none">
-                <button class="px-4 py-2 text-white bg-blue-500 rounded-r-lg">Filter</button>
-            </div>
-        </div>
 
         {{-- <!-- Categories with Scroll -->
         <div class="grid grid-cols-3 gap-2 py-4 overflow-x-auto sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">

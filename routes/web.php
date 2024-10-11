@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\ListingDetails;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +13,10 @@ Route::get('/faqs', function () {
 Route::get('/how-it-works', function () {
     return view('how-it-works');
 });
+
+Route::get('/cookie-policy', function () {
+    return view('cookie-policy');
+})->name('cookie-policy');
 
 Route::middleware([
     'auth:sanctum',
@@ -35,6 +38,10 @@ Route::middleware([
     Route::get('/listing/{id}', function ($id) {
         return view('listing-details', ['id' => $id]);
     })->name('listing.details');
+
+    Route::get('/user/{userId}', function ($userId) {
+        return view('user-profile', ['userId' => $userId]);
+    })->name('user.profile');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

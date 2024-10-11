@@ -1,6 +1,6 @@
 <div>
     <header x-data="{ isOpen: false }" class="bg-white shadow">
-        <div class="px-2 mx-auto max-w-7xl sm:px-4 lg:px-6">
+        <div class="px-2 mx-auto sm:px-4 lg:px-6">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo Section -->
                 <div class="flex-shrink-0">
@@ -53,6 +53,28 @@
                                     </x-slot>
                                 </x-dropdown>
                             @endif
+                        </div>
+                        <div class="relative" x-data="{ isOpen: false, search: '' }" @click.away="isOpen = false">
+                            <input type="text"
+                                class="w-64 px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-full focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-400"
+                                placeholder="Search users..." x-model="search"
+                                @input.debounce.300ms="$wire.searchUsers(search)" @focus="isOpen = true">
+                            <div x-show="isOpen && search.length > 0"
+                                class="absolute z-50 w-full mt-2 bg-white rounded-md shadow-lg">
+                                @foreach ($searchResults as $user)
+                                    <a href="{{ route('user.profile', $user->id) }}"
+                                        class="flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100">
+                                        <img src="{{ $user->profile_photo_url }}"
+                                            alt="{{ $user->name }} {{ substr($user->last_name, 0, 1) . '.' }}"
+                                            class="w-10 h-10 rounded-full">
+                                        <span class="ml-4 text-sm text-gray-700">{{ $user->name }}
+                                            {{ substr($user->last_name, 0, 1) . '.' }}</span>
+                                    </a>
+                                @endforeach
+                                @if (count($searchResults) === 0)
+                                    <div class="px-4 py-3 text-sm text-gray-700">No results found</div>
+                                @endif
+                            </div>
                         </div>
                         <a href="/dashboard"
                             class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-transparent hover:border-gray-300">

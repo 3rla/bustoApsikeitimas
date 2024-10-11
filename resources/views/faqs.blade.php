@@ -8,14 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800 bg-gray-100">
+    <x-cookie-banner />
 
     <!-- Navbar -->
     <livewire:navbar />
 
     <!-- FAQ Section -->
     <section class="py-12">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-4xl px-4 mx-auto text-center sm:px-6 lg:px-8">
             <h1 class="text-4xl font-extrabold text-gray-900">FAQs</h1>
             <p class="mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nunc maximus nulla ut
                 commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.</p>
@@ -29,7 +30,7 @@
                 <h3 class="text-lg font-semibold">Still have questions?</h3>
                 <p class="mt-2 text-gray-500">Lorem ipsum dolor sit amet, consectetur.</p>
                 <a href="#"
-                    class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Contact</a>
+                    class="inline-block px-4 py-2 mt-4 text-white bg-blue-600 rounded-md hover:bg-blue-700">Contact</a>
             </div>
             @livewireScripts
         </div>

@@ -71,4 +71,24 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+
+    public function listings()
+    {
+        return $this->hasMany(home_listings::class);
+    }
+
+    public function receivedReviews()
+    {
+        return $this->hasMany(reviews::class, 'reviewed_id');
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        return $query->where(function ($query) use ($term) {
+            $query->where('name', 'like', '%' . $term . '%')
+                ->orWhere('last_name', 'like', '%' . $term . '%')
+                ->orWhere('email', 'like', '%' . $term . '%')
+                ->orWhere('phone', 'like', '%' . $term . '%');
+        });
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\home_listings;
 use App\Traits\ProcessListingDataTrait;
+use Carbon\Carbon;
 
 class HomeListings extends Component
 {
@@ -12,21 +13,38 @@ class HomeListings extends Component
 
     public $listings;
 
-    /**
-     * Initializes the component and processes the home listings.
-     *
-     * This method is called when the component is mounted. It retrieves all home listings,
-     * processes their amenities and images, and assigns the processed listings to the
-     * component's `listings` property.
-     *
-     */
+    protected $listeners = ['listingsFiltered' => 'updateListings'];
+
     public function mount()
     {
         $this->listings = home_listings::all()->map(function ($listing) {
-            $listing->processedAmenities = $this->processAmenities($listing->amenities, 3);
-            $listing->images = $this->processImages($listing->images);
-            return $listing;
+            return $this->processListing($listing);
         });
+    }
+
+    public function updateListings($filteredListings)
+    {
+        $this->listings = collect($filteredListings)->map(function ($listing) {
+            $listing = (object) $listing;
+            return $this->processListing($listing);
+        });
+    }
+
+    private function processListing($listing)
+    {
+        $listing->processedAmenities = $this->processAmenities($listing->amenities, 3);
+        $listing->images = $this->processImages($listing->images);
+
+        // Convert date strings to Carbon instances
+        $listing->available_from = $this->formatDate($listing->available_from);
+        $listing->available_to = $this->formatDate($listing->available_to);
+
+        return $listing;
+    }
+
+    private function formatDate($dateString)
+    {
+        return $dateString ? Carbon::parse($dateString) : null;
     }
 
     public function render()

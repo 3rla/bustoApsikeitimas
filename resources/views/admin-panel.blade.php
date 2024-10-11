@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <x-cookie-banner />
 
     <!-- Navbar -->
     <livewire:navbar />

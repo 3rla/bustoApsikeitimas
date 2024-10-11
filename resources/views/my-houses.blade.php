@@ -20,6 +20,7 @@
 </head>
 
 <body class="text-gray-800 bg-gray-100">
+    <x-cookie-banner />
 
     <!-- Navbar -->
     <livewire:navbar />

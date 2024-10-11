@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     @foreach ($listings as $listing)
-        <div class="flex flex-col overflow-hidden bg-white border border-gray-200 rounded-lg shadow-md">
+        <div class="flex flex-col h-full overflow-hidden bg-white border border-gray-200 rounded-lg shadow-md">
             <div class="relative w-full h-48">
                 @if ($listing->images && count($listing->images) > 0)
                     <img src="{{ Storage::url($listing->images[0]) }}" alt="{{ $listing->title }}"
@@ -13,7 +13,7 @@
             </div>
             <div class="flex flex-col flex-grow p-4">
                 <div class="flex items-center justify-between mb-2">
-                    <h2 class="text-xl font-bold text-gray-800">{{ $listing->title }}</h2>
+                    <h2 class="text-xl font-bold text-gray-800 truncate">{{ $listing->title }}</h2>
                     <div class="flex items-center">
                         <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                             <path
@@ -22,8 +22,10 @@
                         <span class="ml-1 text-xs font-medium text-gray-600">New</span>
                     </div>
                 </div>
-                <h3 class="mb-2 text-sm text-gray-600">{{ $listing->city }}, {{ $listing->country }}</h3>
-                <p class="mb-2 overflow-hidden text-sm text-gray-600">{{ Str::limit($listing->description, 100) }}</p>
+                <h3 class="h-5 mb-2 overflow-hidden text-sm text-gray-600">{{ $listing->city }}, {{ $listing->country }}
+                </h3>
+                <p class="h-12 mb-2 overflow-hidden text-sm text-gray-600">{{ Str::limit($listing->description, 90) }}
+                </p>
                 <div class="grid grid-cols-2 gap-2 mb-2 text-xs">
                     <span class="flex items-center text-gray-600">
                         <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,24 +51,32 @@
                         {{ $listing->available_from->format('M d') }} - {{ $listing->available_to->format('M d, Y') }}
                     </span>
                 </div>
-                <div class="mb-2">
-                    <h4 class="text-xs font-semibold text-gray-700">Amenities:</h4>
-                    <div class="flex flex-wrap gap-1">
+                <div class="flex-grow mb-2">
+                    <h4 class="mb-2 text-sm font-semibold text-gray-700">Amenities:</h4>
+                    <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
                         @foreach ($listing->processedAmenities['display'] as $amenity)
-                            <span
-                                class="px-1.5 py-0.5 text-xs text-gray-600 bg-gray-100 rounded-full">{{ $amenity }}</span>
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-xs text-gray-600">{{ $amenity }}</span>
+                            </div>
                         @endforeach
-                        @if ($listing->processedAmenities['remaining'] > 0)
-                            <span class="px-1.5 py-0.5 text-xs text-gray-600 bg-gray-100 rounded-full">
-                                +{{ $listing->processedAmenities['remaining'] }} more
-                            </span>
-                        @endif
                     </div>
+                    @if ($listing->processedAmenities['remaining'] > 0)
+                        <div class="mt-2">
+                            <span class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded-full">
+                                +{{ $listing->processedAmenities['remaining'] }} more amenities
+                            </span>
+                        </div>
+                    @endif
                 </div>
-                <div class="flex justify-center mt-auto">
-                    <a href="{{ route('listing.details', ['id' => $listing->id]) }}"
-                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        View Details
+                <div class="flex items-center justify-center mt-auto">
+                    <a href="{{ route('listing.details', $listing->id) }}"
+                        class="px-4 py-2 text-sm font-medium text-white transition duration-300 ease-in-out bg-blue-600 rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:shadow-lg">
+                        View Listing
                     </a>
                 </div>
             </div>
