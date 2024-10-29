@@ -16,8 +16,7 @@ class HomeSwapFactory extends Factory
 
     public function definition()
     {
-        $startDate = $this->faker->dateTimeBetween('now', '+1 year');
-        $endDate = $this->faker->dateTimeBetween($startDate, $startDate->format('Y-m-d') . ' +3 months');
+        $status = $this->faker->randomElement(['pending', 'accepted', 'rejected', 'completed']);
 
         return [
             'sender_user_id' => User::factory(),
@@ -26,7 +25,8 @@ class HomeSwapFactory extends Factory
             'receiver_listing_id' => home_listings::factory(),
             'start_date' => $this->faker->dateTimeBetween('now', '+1 month'),
             'end_date' => $this->faker->dateTimeBetween('+1 month', '+2 months'),
-            'status' => $this->faker->randomElement(['pending', 'accepted', 'rejected', 'completed']),
+            'sender_status' => $status,
+            'receiver_status' => $status,
             'message' => $this->faker->sentence(),
         ];
     }

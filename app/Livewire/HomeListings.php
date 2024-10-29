@@ -17,9 +17,11 @@ class HomeListings extends Component
 
     public function mount()
     {
-        $this->listings = home_listings::all()->map(function ($listing) {
-            return $this->processListing($listing);
-        });
+        $this->listings = home_listings::where('approval_status', 'approved')
+            ->get()
+            ->map(function ($listing) {
+                return $this->processListing($listing);
+            });
     }
 
     public function updateListings($filteredListings)

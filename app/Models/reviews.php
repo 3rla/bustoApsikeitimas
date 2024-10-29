@@ -31,4 +31,9 @@ class reviews extends Model
     {
         return $this->belongsTo(HomeSwap::class);
     }
+
+    public function reviewedListing()
+    {
+        return $this->reviewed->homeListing();
+    }
 }

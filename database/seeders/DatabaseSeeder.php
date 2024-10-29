@@ -23,9 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             ListingSwapReviewSeeder::class,
-            // HomeListingSeeder::class,
-            // HomeSwapSeeder::class,
-            // ReviewsSeeder::class,
+            ReportsTableSeeder::class,
         ]);
     }
 }

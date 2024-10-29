@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
+use App\Livewire\AdminReports;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,6 +44,15 @@ Route::middleware([
     Route::get('/user/{userId}', function ($userId) {
         return view('user-profile', ['userId' => $userId]);
     })->name('user.profile');
+
+    Route::get('/my-swaps', function () {
+        return view('my-swaps');
+    })->name('my-swaps');
+
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/{user}', [ChatController::class, 'show'])->name('chat.show');
+
+    Route::get('/admin/reports', AdminReports::class)->name('admin.reports');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -64,4 +75,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin-panel/reports', function () {
         return view('admin.admin-reports');
     })->name('admin.reports');
+
+    Route::get('/admin-panel/listing-approvals', App\Livewire\AdminListingApproval::class)->name('admin.listing-approval');
+
+    Route::get('/admin-panel/listing-approvals', function () {
+        return view('admin.admin-listing-approvals');
+    })->name('admin.listing-approvals');
 });

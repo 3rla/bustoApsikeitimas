@@ -16,7 +16,8 @@ class HomeSwap extends Model
         'receiver_listing_id',
         'start_date',
         'end_date',
-        'status',
+        'sender_status',
+        'receiver_status',
         'message',
     ];
 

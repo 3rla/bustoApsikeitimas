@@ -19,12 +19,14 @@ return new class extends Migration
             $table->foreignId('receiver_listing_id')->constrained('home_listings')->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
-            $table->enum('status', ['pending', 'accepted', 'rejected', 'completed'])->default('pending');
+            $table->enum('sender_status', ['pending', 'accepted', 'rejected', 'completed'])->default('pending');
+            $table->enum('receiver_status', ['pending', 'accepted', 'rejected', 'completed'])->default('pending');
             $table->text('message')->nullable();
             $table->timestamps();
 
             $table->index(['sender_user_id', 'receiver_user_id']);
-            $table->index('status');
+            $table->index('sender_status');
+            $table->index('receiver_status');
             $table->index(['start_date', 'end_date']);
         });
     }

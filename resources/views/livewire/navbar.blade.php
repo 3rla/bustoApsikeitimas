@@ -50,6 +50,9 @@
                                         <x-dropdown-link href="{{ route('admin.reports') }}">
                                             {{ __('Reports') }}
                                         </x-dropdown-link>
+                                        <x-dropdown-link href="{{ route('admin.listing-approvals') }}">
+                                            {{ __('Listing Approvals') }}
+                                        </x-dropdown-link>
                                     </x-slot>
                                 </x-dropdown>
                             @endif

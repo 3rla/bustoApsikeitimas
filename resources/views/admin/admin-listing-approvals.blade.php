@@ -15,7 +15,7 @@
     <livewire:navbar />
 
     <!-- Admin Reports CRUD -->
-    <livewire:admin-reports />
+    <livewire:admin-listing-approval />
 
     <!-- Footer -->
     {{-- <livewire:footer /> --}}

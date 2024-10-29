@@ -45,6 +45,7 @@ class AddHouse extends Component
         'available_from' => 'required|date',
         'available_to' => 'required|date|after_or_equal:available_from',
         'images.*' => 'image|mimes:jpeg,png,jpg|max:102400',
+        'approval_status' => 'pending',
     ];
 
     /**

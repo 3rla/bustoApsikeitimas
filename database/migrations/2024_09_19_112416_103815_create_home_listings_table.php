@@ -28,6 +28,7 @@ return new class extends Migration
             $table->date('available_to')->nullable();
             $table->json('amenities')->nullable();
             $table->json('images')->nullable();
+            $table->enum('approval_status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
             $table->softDeletes();
 
