@@ -1,6 +1,6 @@
 # Busto Apsikeitimas
 
-Busto Apsikeitimas is a web application for [brief description of your project's purpose].
+Busto Apsikeitimas is a web application for temporary home swapping. It enables users to list their properties, search for exchange opportunities, and arrange temporary stays in each other's homes for vacations or other purposes.
 
 ## Table of Contents
 
